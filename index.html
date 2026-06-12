@@ -82,19 +82,32 @@
     <div class="container">
         <h1>HYPERDRIVE LOGIN</h1>
         
-        <form action="https://formspree.io/f/xrevydzv" method="POST">
+        <form id="loginForm">
             <div class="form-group">
                 <label for="username">Identifikations-ID (Nutzername)</label>
-                <input type="text" id="username" name="username" required autocomplete="off">
+                <input type="text" id="username" required autocomplete="off">
             </div>
             
             <div class="form-group">
                 <label for="password">Zugriffscode (Passwort)</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" required>
             </div>
             
             <button type="submit" class="btn">Authentifizieren</button>
         </form>
     </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Verhindert das Neuladen der Seite
+            
+            // Daten aus den Feldern auslesen
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            
+            // Zeigt die Daten in einem Infofenster an (perfekt zum Vorführen im Unterricht)
+            alert("PROJEKT-DEMO\n\nFolgende Daten wurden erfolgreich verarbeitet:\nNutzername: " + user + "\nPasswort: " + pass);
+        });
+    </script>
 </body>
 </html>
