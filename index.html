@@ -12,7 +12,7 @@
         }
 
         body {
-            background-color: #0d1117;
+            background-color: #f5f5f5;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             justify-content: center;
@@ -27,50 +27,52 @@
         }
 
         #startView h1 {
-            color: #e6edf3;
-            font-size: 1.6em;
-            font-weight: 600;
+            color: #1a1a1a;
+            font-size: 1.8em;
+            font-weight: 700;
             margin-bottom: 10px;
         }
 
         #startView p {
-            color: #8b949e;
-            font-size: 0.9em;
-            margin-bottom: 36px;
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 40px;
         }
 
         .drive-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            max-width: 560px;
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            justify-content: center;
         }
 
         .drive-card {
-            background-color: #161b22;
-            border: 1px solid #21262d;
-            border-radius: 12px;
-            padding: 28px 16px;
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 16px;
+            padding: 36px 24px;
             cursor: pointer;
-            transition: border-color 0.2s, transform 0.15s;
+            transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
             text-align: center;
+            width: 160px;
         }
 
         .drive-card:hover {
             border-color: #388bfd;
-            transform: translateY(-2px);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
         }
 
         .drive-img {
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             object-fit: contain;
-            margin-bottom: 10px;
-            border-radius: 8px;
+            margin-bottom: 14px;
+            border-radius: 10px;
         }
 
         .drive-card .name {
-            color: #e6edf3;
+            color: #1a1a1a;
             font-size: 0.88em;
             font-weight: 600;
         }
@@ -79,17 +81,18 @@
         .box {
             display: none;
             width: 100%;
-            max-width: 360px;
+            max-width: 380px;
             padding: 40px 36px;
-            background-color: #161b22;
-            border: 1px solid #21262d;
-            border-radius: 12px;
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
 
         .back-btn {
             background: none;
             border: none;
-            color: #8b949e;
+            color: #888;
             font-size: 0.85em;
             cursor: pointer;
             margin-bottom: 24px;
@@ -101,23 +104,23 @@
         }
 
         .back-btn:hover {
-            color: #e6edf3;
-        }
-
-        h1 {
-            color: #e6edf3;
-            font-size: 1.3em;
-            font-weight: 600;
-            text-align: center;
-            margin-bottom: 28px;
+            color: #1a1a1a;
         }
 
         .login-logo {
-            width: 52px;
-            height: 52px;
+            width: 60px;
+            height: 60px;
             object-fit: contain;
             display: block;
             margin: 0 auto 16px auto;
+        }
+
+        h1 {
+            color: #1a1a1a;
+            font-size: 1.3em;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 28px;
         }
 
         .form-group {
@@ -126,19 +129,20 @@
 
         label {
             display: block;
-            color: #8b949e;
+            color: #555;
             margin-bottom: 6px;
             font-size: 0.85em;
+            font-weight: 500;
         }
 
         input[type="text"],
         input[type="password"] {
             width: 100%;
             padding: 10px 12px;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            background-color: #0d1117;
-            color: #e6edf3;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fafafa;
+            color: #1a1a1a;
             font-size: 0.95em;
             transition: border-color 0.2s;
         }
@@ -147,6 +151,7 @@
         input[type="password"]:focus {
             outline: none;
             border-color: #388bfd;
+            background-color: #fff;
         }
 
         .btn {
@@ -156,7 +161,7 @@
             color: #fff;
             padding: 11px;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             font-weight: 600;
             font-size: 0.95em;
             cursor: pointer;
@@ -168,6 +173,7 @@
             background-color: #2ea44f;
         }
 
+        /* ── ERFOLG ── */
         .success-screen {
             text-align: center;
         }
@@ -182,17 +188,18 @@
             justify-content: center;
             margin: 0 auto 20px auto;
             font-size: 1.8em;
+            color: white;
         }
 
         .success-screen h2 {
-            color: #e6edf3;
+            color: #1a1a1a;
             font-size: 1.2em;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 8px;
         }
 
         .success-screen p {
-            color: #8b949e;
+            color: #666;
             font-size: 0.88em;
             margin-bottom: 24px;
         }
@@ -200,18 +207,18 @@
         .home-btn {
             display: inline-block;
             background: none;
-            border: 1px solid #30363d;
-            color: #8b949e;
+            border: 1px solid #ddd;
+            color: #555;
             padding: 8px 20px;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 0.85em;
             cursor: pointer;
             transition: border-color 0.2s, color 0.2s;
         }
 
         .home-btn:hover {
-            border-color: #8b949e;
-            color: #e6edf3;
+            border-color: #888;
+            color: #1a1a1a;
         }
     </style>
 </head>
@@ -284,8 +291,8 @@
             document.getElementById('loginLogo').src = logoUrl;
             document.getElementById('loginForm').reset();
 
-            document.getElementById('startView').style.display  = 'none';
-            document.getElementById('loginView').style.display  = 'block';
+            document.getElementById('startView').style.display   = 'none';
+            document.getElementById('loginView').style.display   = 'block';
             document.getElementById('successView').style.display = 'none';
         }
 
