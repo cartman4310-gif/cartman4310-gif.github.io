@@ -24,6 +24,7 @@
         #startView {
             text-align: center;
             padding: 40px 20px;
+            width: 100%;
         }
 
         #startView h1 {
@@ -38,6 +39,7 @@
             flex-direction: row;
             gap: 20px;
             justify-content: center;
+            flex-wrap: nowrap;
         }
 
         .drive-card {
@@ -49,6 +51,7 @@
             transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
             text-align: center;
             width: 160px;
+            flex-shrink: 0;
         }
 
         .drive-card:hover {
@@ -71,6 +74,7 @@
             font-weight: 600;
         }
 
+        /* ── LOGIN / ERFOLG ── */
         .box {
             display: none;
             width: 100%;
@@ -80,6 +84,7 @@
             border: 1px solid #e0e0e0;
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin: 20px;
         }
 
         .back-btn {
@@ -211,6 +216,47 @@
         .home-btn:hover {
             border-color: #888;
             color: #1a1a1a;
+        }
+
+        /* ── MOBILE ── */
+        @media (max-width: 600px) {
+            #startView h1 {
+                font-size: 1.4em;
+                margin-bottom: 24px;
+            }
+
+            .drive-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 14px;
+            }
+
+            .drive-card {
+                width: 85%;
+                max-width: 320px;
+                padding: 20px 24px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .drive-img {
+                width: 56px;
+                height: 56px;
+                margin-bottom: 0;
+                flex-shrink: 0;
+            }
+
+            .drive-card .name {
+                font-size: 1em;
+                text-align: left;
+            }
+
+            .box {
+                margin: 20px;
+                padding: 30px 24px;
+            }
         }
     </style>
 </head>
