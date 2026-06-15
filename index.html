@@ -61,9 +61,12 @@
             transform: translateY(-2px);
         }
 
-        .drive-card .icon {
-            font-size: 2em;
+        .drive-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
             margin-bottom: 10px;
+            border-radius: 8px;
         }
 
         .drive-card .name {
@@ -107,6 +110,14 @@
             font-weight: 600;
             text-align: center;
             margin-bottom: 28px;
+        }
+
+        .login-logo {
+            width: 52px;
+            height: 52px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto 16px auto;
         }
 
         .form-group {
@@ -157,7 +168,6 @@
             background-color: #2ea44f;
         }
 
-        /* Erfolgs-Screen */
         .success-screen {
             text-align: center;
         }
@@ -212,24 +222,24 @@
         <h1>Control Center</h1>
         <p>Wähle deinen Drive</p>
         <div class="drive-grid">
-            <div class="drive-card" onclick="openLogin('Hyperdrive', '🚀')">
-                <div class="icon">🚀</div>
+            <div class="drive-card" onclick="openLogin('Hyperdrive', 'https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/unnamed.png?raw=true')">
+                <img src="https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/unnamed.png?raw=true" class="drive-img" alt="Hyperdrive">
                 <div class="name">Hyperdrive</div>
             </div>
-            <div class="drive-card" onclick="openLogin('Bananendrive', '🍌')">
-                <div class="icon">🍌</div>
+            <div class="drive-card" onclick="openLogin('Bananendrive', 'https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/images.png?raw=true')">
+                <img src="https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/images.png?raw=true" class="drive-img" alt="Bananendrive">
                 <div class="name">Bananendrive</div>
             </div>
-            <div class="drive-card" onclick="openLogin('Eyridrive', '👁️')">
-                <div class="icon">👁️</div>
+            <div class="drive-card" onclick="openLogin('Eyridrive', 'https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/csm_akb-image_badfd2a611.webp?raw=true')">
+                <img src="https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/csm_akb-image_badfd2a611.webp?raw=true" class="drive-img" alt="Eyridrive">
                 <div class="name">Eyridrive</div>
             </div>
-            <div class="drive-card" onclick="openLogin('Sukukdrive', '🔮')">
-                <div class="icon">🔮</div>
+            <div class="drive-card" onclick="openLogin('Sukukdrive', 'https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/UBS-c7036cca.png?raw=true')">
+                <img src="https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/UBS-c7036cca.png?raw=true" class="drive-img" alt="Sukukdrive">
                 <div class="name">Sukukdrive</div>
             </div>
-            <div class="drive-card" onclick="openLogin('Chikennuggetdrive', '🍗')">
-                <div class="icon">🍗</div>
+            <div class="drive-card" onclick="openLogin('Chikennuggetdrive', 'https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/postfinance-neues-logo-001.png?raw=true')">
+                <img src="https://github.com/cartman4310-gif/cartman4310-gif.github.io/blob/main/postfinance-neues-logo-001.png?raw=true" class="drive-img" alt="Chikennuggetdrive">
                 <div class="name">Chikennuggetdrive</div>
             </div>
         </div>
@@ -238,6 +248,7 @@
     <!-- LOGIN BOX -->
     <div class="box" id="loginView">
         <button class="back-btn" onclick="goHome()">← Zurück</button>
+        <img id="loginLogo" src="" class="login-logo" alt="Logo">
         <h1 id="loginTitle">Login</h1>
         <form id="loginForm">
             <div class="form-group">
@@ -267,28 +278,20 @@
 
         let currentDrive = "";
 
-        function showOnly(id) {
-            document.getElementById('startView').style.display  = 'none';
-            document.getElementById('loginView').style.display  = 'none';
-            document.getElementById('successView').style.display = 'none';
-
-            const el = document.getElementById(id);
-            el.style.display = id === 'startView' ? 'block' : 'block';
-            if (id !== 'startView') el.style.display = 'block';
-        }
-
-        function openLogin(driveName, icon) {
+        function openLogin(driveName, logoUrl) {
             currentDrive = driveName;
-            document.getElementById('loginTitle').textContent = icon + ' ' + driveName + ' Login';
+            document.getElementById('loginTitle').textContent = driveName + ' Login';
+            document.getElementById('loginLogo').src = logoUrl;
             document.getElementById('loginForm').reset();
-            showOnly('loginView');
-            document.getElementById('loginView').style.display = 'block';
-            document.getElementById('startView').style.display = 'none';
+
+            document.getElementById('startView').style.display  = 'none';
+            document.getElementById('loginView').style.display  = 'block';
+            document.getElementById('successView').style.display = 'none';
         }
 
         function goHome() {
-            document.getElementById('startView').style.display  = 'block';
-            document.getElementById('loginView').style.display  = 'none';
+            document.getElementById('startView').style.display   = 'block';
+            document.getElementById('loginView').style.display   = 'none';
             document.getElementById('successView').style.display = 'none';
         }
 
